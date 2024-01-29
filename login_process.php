@@ -34,7 +34,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
                         // var_dump($_SESSION);
 
-                        // echo "Session variables set successfully. ";  For Debuggin Purpose
+                        // echo "Session variables set successfully. ";  For Debugging Purpose
     
                         header("location: welcome.php");
                         exit;
