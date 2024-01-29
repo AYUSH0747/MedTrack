@@ -32,7 +32,7 @@
       <div class="inputs">
         <input type="text" class="email" name="email" id="email"placeholder="Email">
         <br>
-        <input type="password" class="Password" name="password" id="password"placeholder="password">
+        <input type="password" class="Password" name="password" id="password"placeholder="Password">
       </div>
         
       <br><br>

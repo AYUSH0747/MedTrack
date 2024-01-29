@@ -18,17 +18,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                 if($row){
                     if(password_verify($password, $row['Password'])) {
 
-                        // ***********
-                        // if(isset($row['Patient_Number']) && !empty($row['Patient_Number'])) {
-                        //     $_SESSION["userid"] = $row['Patient_Number'];
-                        //     $_SESSION["user"] = $row;
-                        // }
-                        // else{
-                        //     echo "Patient_Number row is empty";
-                        // }
-
-                        // *************
-                        // echo "Successful login condition met.";
                         $_SESSION["userid"] = $row['Patient_Number'];
                         $_SESSION["user"] = $row;
 
@@ -40,14 +29,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                         exit;
                     } else {
                         $error .= '<p class="error"> The password is not valid.</p>';
-                        echo "The password is not valid.";
+                        echo '<script>alert("Incorrect username or password.");</script>';
+                        echo '<script>window.location.href = "login.php";</script>';
+                        exit;
                     }
                 } else {
                     $error .= '<p class="error">Failed to fetch user data.</p>';
+                    echo '<script>alert("Failed to fetch user data.");</script>';
+                    echo '<script>window.location.href = "login.php";</script>';
+                    exit; 
                 }
                 
             } else {
                 $error .= '<p class="error">No User exist with that email address.</p>';
+                echo '<script>alert("Incorrect username or password.");</script>';
+                echo '<script>window.location.href = "login.php";</script>';
+                exit;
             }
         }
         $query->close();
