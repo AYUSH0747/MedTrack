@@ -8,6 +8,7 @@ if (!isset($_SESSION["userid"]) || empty($_SESSION["userid"])) {
 }
 
 $Patient_Number = $_SESSION["userid"];
+$user = $_SESSION["user"];
 
 function decryptString(string $s, string $cipher_algo = "aes-256-cbc"): string
 {
