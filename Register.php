@@ -9,7 +9,7 @@
     
 </head>
 <body>
-<script src="script.js"></script>
+<script src="Registerscript.js"></script>
 <div class="wrapper">
     <div class="title">
       Register
