@@ -23,6 +23,9 @@
             $query->store_result();
                 if($query->num_rows > 0) {
                     $error .= '<p class="error">The email address is already registered!</p>';
+                    echo '<script>alert("The email address is already registered!");</script>';
+                    echo '<script>window.location.href = "login.php";</script>';
+                    exit;
                 } else {
                     if (empty($error)) {
                         $insertQuery = $db->prepare("INSERT INTO users (First_Name, Last_Name, Username, Password, DOB, Gender, Email, Mobile_No, Address) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);");
@@ -31,11 +34,13 @@
                         if($result){
                             $error .= '<p class="success">Your registration was successful!</p>';
                             header("Location: https://localhost/Medtrack/login.php");
-
                             exit;
                         }
                         else{
                             $error .= '<p class="error">Something went wrong!</p>';
+                            echo '<script>alert("Something went wrong! Please try again later");</script>';
+                            echo '<script>window.location.href = "Register.php";</script>';
+                            exit;
                         }
                     }
                     $insertQuery -> close();
