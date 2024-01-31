@@ -24,7 +24,7 @@
 		</div>
 	</div>
 	
-		<script src="script.js"></script>
+		<script src="Loginscript.js"></script>
 		<div class="right">
 		<h5 align="center">Login</h5>
 		
@@ -32,7 +32,7 @@
       <div class="inputs">
         <input type="text" class="email" name="email" id="email"placeholder="Email">
         <br>
-        <input type="password" class="Password" name="password" id="password"placeholder="Password">
+        <input type="password" class="Password" name="password" id="password" placeholder="Password">
       </div>
         
       <br><br>
