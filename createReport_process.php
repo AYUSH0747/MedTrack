@@ -8,7 +8,6 @@ require_once "session.php";
 
 function encryptString(string $s, string $cipher_algo = "aes-256-cbc"): string
 {
-    // Not a big fan, but I'm just trying to keep things simple
     global $encryptionKey;
 
     if (!$ivLength = openssl_cipher_iv_length($cipher_algo)) {
