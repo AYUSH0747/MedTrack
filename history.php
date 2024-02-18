@@ -23,6 +23,7 @@ $result = $query->get_result();
 
 // Check if there are records
 if ($result->num_rows > 0) {
+
     // Display a summary table
     echo "<table border='1'>";
     echo "<tr><th>Serial Number</th><th>Case Number</th><th>Date</th><th>Action</th></tr>";
