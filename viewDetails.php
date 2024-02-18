@@ -181,7 +181,7 @@ try {
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="createReport.php">Add Report</a></li>
-                                <li><a class="dropdown-item" href="#">Edit Report</a></li>
+                                <li><a class="dropdown-item" href="modifyReport.php">Edit Report</a></li>
                                 <li>
                                 </li>
                                 <li><a class="dropdown-item" href="#">Delete Report</a></li>
