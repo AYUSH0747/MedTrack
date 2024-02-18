@@ -46,7 +46,7 @@ $user = $_SESSION["user"];
                             <li><a class="dropdown-item" href="modifyReport.php">Edit Report</a></li>
                             <li>
                             </li>
-                            <li><a class="dropdown-item" href="#">Delete Report</a></li>
+                            <li><a class="dropdown-item" href="deleterReport.php">Delete Report</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
