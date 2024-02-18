@@ -111,7 +111,7 @@ try {
             justify-content: center;
             height: 100vh;
             margin: 0;
-            padding-top: 45px;
+            padding-top: 200px;
         }
 
         table {
@@ -141,6 +141,12 @@ try {
         a {
             text-decoration: none;
             color: #0066cc;
+        }
+
+        .btn-save {
+        display: block;
+        margin: 20px auto; /* Adjust margin as needed */
+        text-align: center;
         }
     </style>
 </head>
@@ -193,17 +199,21 @@ try {
 </div>
 
 <form action="modify_process.php" method="POST">
-        <table border='1'>
-            <?php foreach ($decryptedRow as $key => $value): ?>
-                <tr>
-                    <td><strong><?= $key ?></strong></td>
+    <table border='1'>
+        <?php foreach ($decryptedRow as $key => $value): ?>
+            <tr>
+                <td><strong><?= $key ?></strong></td>
+                <?php if ($key === 'Case_Number'): ?>
+                    <td><?= $value ?></td>
+                    <input type="hidden" name="<?= $key ?>" value="<?= $value ?>">
+                <?php else: ?>
                     <td><input type="text" name="<?= $key ?>" value="<?= $value ?>"></td>
-                </tr>
-            <?php endforeach; ?>
-        </table>
-        <button type="submit" class="btn btn-primary">Save Changes</button>
-    </form>
+                <?php endif; ?>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+    <button type="submit" class="btn btn-primary btn-save">Save Changes</button>
+</form>
 
-</body>
-</html>
+
 
