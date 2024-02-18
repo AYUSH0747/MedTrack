@@ -201,19 +201,29 @@ try {
 <form action="modify_process.php" method="POST">
     <table border='1'>
         <?php foreach ($decryptedRow as $key => $value): ?>
-            <tr>
-                <td><strong><?= $key ?></strong></td>
-                <?php if ($key === 'Case_Number'): ?>
-                    <td><?= $value ?></td>
-                    <input type="hidden" name="<?= $key ?>" value="<?= $value ?>">
-                <?php else: ?>
-                    <td><input type="text" name="<?= $key ?>" value="<?= $value ?>"></td>
-                <?php endif; ?>
-            </tr>
+            <?php if ($key !== 'Patient_Number'): ?>
+                <tr>
+                    <td><strong><?= $key ?></strong></td>
+                    <?php if ($key === 'Case_Number'): ?>
+                        <td style="background-color: #cea0e8;"><?= $value ?></td>
+                        <input type="hidden" name="<?= $key ?>" value="<?= $value ?>">
+                    <?php else: ?>
+                        <td style="background-color: #cea0e8; padding: 4px;">
+                            <input type="text" name="<?= $key ?>" value="<?= $value ?>" style="box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); background: inherit; padding: 4px;">
+                        </td>
+                    <?php endif; ?>
+                </tr>
+            <?php endif; ?>
         <?php endforeach; ?>
     </table>
-    <button type="submit" class="btn btn-primary btn-save">Save Changes</button>
+    <button type="submit" class="btn btn-primary btn-save" style="margin-top: 10px; margin-left: auto; margin-right: auto; display: block;">Save Changes</button>
 </form>
+
+
+
+
+
+
 
 
 
