@@ -200,7 +200,6 @@ try {
 
     
 </div>
-
 <form action="modify_process.php" method="POST">
     <table border='1'>
         <?php foreach ($decryptedRow as $key => $value): ?>
@@ -212,7 +211,7 @@ try {
                         <input type="hidden" name="<?= $key ?>" value="<?= $value ?>">
                     <?php else: ?>
                         <td style="background-color: #cea0e8; padding: 4px;">
-                            <input type="text" name="<?= $key ?>" value="<?= $value ?>" style="box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); background: inherit; padding: 4px;">
+                            <input type="text" name="<?= $key ?>" value="<?= $value ?>" style="box-shadow: 0 0 5px rgba(0, 0, 0, -0.1); background: inherit; padding: 4px;">
                         </td>
                     <?php endif; ?>
                 </tr>
