@@ -43,7 +43,9 @@ if ($result->num_rows > 0) {
 
     echo "</table>";
 } else {
-    echo "No medical records found.";
+    echo "<div align='center' class='ErrorHeading'>";
+    echo "<h5><strong>No medical records found.</strong></h5>";
+    echo "</div>";
 }
 
 $query->close();
@@ -95,6 +97,13 @@ mysqli_close($db);
             a {
                 text-decoration: none;
                 color: #0066cc;
+            }
+            .ErrorHeading {
+                text-align: center;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
             }
         </style>
     </head>
