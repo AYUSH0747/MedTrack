@@ -106,7 +106,7 @@ try {
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">Profile</a>
+                            <a class="nav-link active" href="profile.php">Profile</a>
                         </li>
                         <li class="nav-item">
                             <a href="logout.php" class="btn btn-danger active" role="button"  aria-pressed="true">Log Out</a>
