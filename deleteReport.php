@@ -11,7 +11,6 @@ $Patient_Number = $_SESSION["userid"];
 $user = $_SESSION["user"];
 
 try {
-    // Retrieve all reports for the current user
     $query = $db->prepare("SELECT * FROM medical_records WHERE Patient_Number = ?");
     $query->bind_param("i", $Patient_Number);
     $query->execute();
@@ -70,12 +69,16 @@ try {
             text-decoration: none;
             color: #0066cc;
         }
+        .ErrorHeading {
+            text-align: center;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
 <div>
     <nav class="navbar bg-body-tertiary fixed-top" data-bs-theme="dark">
         <div class="container-fluid">
@@ -95,21 +98,19 @@ try {
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Reports
+                                Reports
                             </a>
                             <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="createReport.php">Add Report</a></li>
-                            <li><a class="dropdown-item" href="modifyReport.php">Edit Report</a></li>
-                            <li>
-                            </li>
-                            <li><a class="dropdown-item" href="deleteReport.php">Delete Report</a></li>
+                                <li><a class="dropdown-item" href="createReport.php">Add Report</a></li>
+                                <li><a class="dropdown-item" href="modifyReport.php">Edit Report</a></li>
+                                <li><a class="dropdown-item" href="deleteReport.php">Delete Report</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="profile.php">Profile</a>
                         </li>
                         <li class="nav-item">
-                            <a href="logout.php" class="btn btn-danger active" role="button"  aria-pressed="true">Log Out</a>
+                            <a href="logout.php" class="btn btn-danger active" role="button" aria-pressed="true">Log Out</a>
                         </li>
                     </ul>
                 </div>
@@ -119,38 +120,41 @@ try {
 </div>
 <div class="container mt-5">
     <h2 align="center"><strong>Delete Report</strong></h2>
-    <table class="table table-bordered">
-        <thead>
-        <tr>
-            <th>Case Number</th>
-            <th>Date</th>
-            <th>Action</th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php while ($row = $result->fetch_assoc()): ?>
+    <?php if ($result->num_rows > 0): ?>
+        <table class="table table-bordered">
+            <thead>
             <tr>
-                <td><?= $row['Case_Number'] ?></td>
-                <td><?= $row['Date'] ?></td>
-                <td>
-                    <button class="btn btn-danger delete-btn" data-case="<?= $row['Case_Number'] ?>">Delete</button>
-                </td>
+                <th>Case Number</th>
+                <th>Date</th>
+                <th>Action</th>
             </tr>
-        <?php endwhile; ?>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            <?php while ($row = $result->fetch_assoc()): ?>
+                <tr>
+                    <td><?= $row['Case_Number'] ?></td>
+                    <td><?= $row['Date'] ?></td>
+                    <td>
+                        <button class="btn btn-danger delete-btn" data-case="<?= $row['Case_Number'] ?>">Delete</button>
+                    </td>
+                </tr>
+            <?php endwhile; ?>
+            </tbody>
+        </table>
+    <?php else: ?>
+        <div align='center' class='ErrorHeading'>
+            <h5><strong>No records found.</strong></h5>
+        </div>
+    <?php endif; ?>
 </div>
 
 <script>
-    //Added eventlistner
     const deleteButtons = document.querySelectorAll('.delete-btn');
     deleteButtons.forEach(button => {
         button.addEventListener('click', function() {
             const caseNumber = this.dataset.case;
             const confirmDelete = confirm('Are you sure you want to delete this report?');
-
             if (confirmDelete) {
-                // Redirect to delete process page with case number as parameter
                 window.location.href = `deleteReport_process.php?Case_Number=${caseNumber}`;
             }
         });
