@@ -15,36 +15,35 @@ if (isset($_SESSION["user"])) {
     $user = $_SESSION["user"];
 }
 
-// Fetch medical records for the logged-in user
 $query = $db->prepare("SELECT Case_Number, Date FROM medical_records WHERE Patient_Number = ? ORDER BY Date DESC");
 $query->bind_param("i", $Patient_Number);
 $query->execute();
 $result = $query->get_result();
 
-// Check if there are records
 if ($result->num_rows > 0) {
 
-    // Display a summary table
     echo "<table border='1'>";
     echo "<tr><th>Serial Number</th><th>Case Number</th><th>Date</th><th>Action</th></tr>";
 
-    $serialNumber = 1; // Initialize serial number
+    $serialNumber = 1;
 
     while ($row = $result->fetch_assoc()) {
         echo "<tr>";
-        echo "<td>" . $serialNumber . "</td>"; // Display serial number
+        echo "<td>" . $serialNumber . "</td>";
         echo "<td>" . $row['Case_Number'] . "</td>";
         echo "<td>" . $row['Date'] . "</td>";
         echo "<td><form action='viewDetails.php' method='GET'><input type='hidden' name='Case_Number' value='" . $row['Case_Number'] . "'><button action='viewDetails.php' type='submit' class='btn btn-secondary'>View Details</button></form></td>";
 
         echo "</tr>";
 
-        $serialNumber++; // Increment serial number for the next row
+        $serialNumber++;
     }
 
     echo "</table>";
 } else {
-    echo "No medical records found.";
+    echo "<div align='center' class='ErrorHeading'>";
+    echo "<h5><strong>No medical records found.</strong></h5>";
+    echo "</div>";
 }
 
 $query->close();
@@ -97,6 +96,14 @@ mysqli_close($db);
                 text-decoration: none;
                 color: #0066cc;
             }
+            .ErrorHeading {
+                text-align: center;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+            
         </style>
     </head>
     <body>
