@@ -53,7 +53,7 @@ try {
         if ($result->num_rows > 0) {
             $row = $result->fetch_array(MYSQLI_ASSOC);
 
-            // Decrypt the encrypted values using the new function
+            // Decrypting the encrypted values using the new function
             $decryptedRow = [];
             foreach ($row as $key => $value) {
                 if($key === 'Patient_Number'){
@@ -64,14 +64,12 @@ try {
                     continue;
                 }
 
-                // Check if the value is empty before decryption
+                // Checking if the value is empty before decryption
                 if (!empty($value)) {
                     try {
-                        // Decrypt the value using the new function
                         $decryptedValue = decryptString($value);
                         $decryptedRow[$key] = $decryptedValue;
                     } catch (Exception $e) {
-                        // Handle decryption errors
                         echo "Error decrypting value for key: $key. " . $e->getMessage() . "\n";
                     }
                 } else {
