@@ -1,5 +1,6 @@
 function validateform(){
 
+    //Email Validation
     let email = document.getElementById("email").value;
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if(email==""){
