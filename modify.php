@@ -45,7 +45,7 @@ try {
         if ($result->num_rows > 0) {
             $row = $result->fetch_array(MYSQLI_ASSOC);
 
-            // Decrypt the encrypted values
+            // Decrypting the encrypted values
             $decryptedRow = [];
             foreach ($row as $key => $value) {
                 if ($key === 'Patient_Number' || $key === 'Case_Number' || $key === 'Date') {
@@ -53,7 +53,7 @@ try {
                     continue;
                 }
 
-                // Check if the value is empty before decryption
+                // Checking if the value is empty before decryption
                 if (!empty($value)) {
                     try {
                         // Decrypt the value
@@ -68,18 +68,6 @@ try {
                     $decryptedRow[$key] = $value;
                 }
             }
-
-            // // Display decrypted values and input fields for editing
-            // echo "<form action='updateReport.php' method='POST'>";
-            // foreach ($decryptedRow as $key => $value) {
-            //     echo "<div>";
-            //     echo "<label for='$key'>$key:</label>";
-            //     echo "<input type='text' id='$key' name='$key' value='$value'>";
-            //     echo "</div>";
-            // }
-            // echo "<input type='hidden' name='Case_Number' value='$caseNumber'>";
-            // echo "<input type='submit' value='Update'>";
-            // echo "</form>";
         } else {
             echo "Report not found.";
         }
@@ -145,7 +133,7 @@ try {
 
         .btn-save {
         display: block;
-        margin: 20px auto; /* Adjust margin as needed */
+        margin: 20px auto;
         text-align: center;
         }
     </style>
