@@ -133,13 +133,11 @@ try {
         echo "<h2 align='center'><strong>User Profile</strong></h2>";
         echo "<table class='table table-bordered'>";
         foreach ($row as $key => $value) {
-            // Skip the password field
             if ($key === 'Password') {
                 continue;
             }
             echo "<tr>";
             echo "<td><strong>$key</strong></td>";
-            // Exclude decryption for the DOB field
             if ($key === 'DOB' || $key === 'Patient_Number' || $key === 'Email') {
                 echo "<td>$value</td>";
             } else {
