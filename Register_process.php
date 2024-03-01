@@ -32,7 +32,7 @@
         $password = $_POST["ps"];
         $confirm_password =  encryptString($_POST["cps"]);
         $password_hash = encryptString(password_hash($password, PASSWORD_DEFAULT));
-        $DOB = encryptString($_POST["DOB"]);
+        $DOB = $_POST["DOB"];
         $gender = encryptString(trim($_POST["gender"]));
         $email = trim($_POST["email"]);
         $phone = encryptString($_POST["pn"]);

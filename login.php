@@ -10,7 +10,7 @@
 
 </head>
 <body>
-<!-- partial:index.partial.html -->
+
 <div class="box-form">
 	<div class="left">
 		<div class="overlay">
@@ -39,7 +39,6 @@
       <p>Don't have an account? <a href="Register.php">Create Your Account</a> it takes less than a minute</p>
         
       <div class="remember-me--forget-password">
-          <!-- Angular -->
         <label>
           <input type="checkbox" name="item" checked/>
           <span class="text-checkbox">Remember me</span>
@@ -53,7 +52,6 @@
     </form>
 	
 </div>
-<!-- partial -->
   
 </body>
 </html>

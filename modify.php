@@ -45,7 +45,7 @@ try {
         if ($result->num_rows > 0) {
             $row = $result->fetch_array(MYSQLI_ASSOC);
 
-            // Decrypt the encrypted values
+            // Decrypting the encrypted values
             $decryptedRow = [];
             foreach ($row as $key => $value) {
                 if ($key === 'Patient_Number' || $key === 'Case_Number' || $key === 'Date') {
@@ -53,7 +53,7 @@ try {
                     continue;
                 }
 
-                // Check if the value is empty before decryption
+                // Checking if the value is empty before decryption
                 if (!empty($value)) {
                     try {
                         // Decrypt the value
@@ -68,18 +68,6 @@ try {
                     $decryptedRow[$key] = $value;
                 }
             }
-
-            // // Display decrypted values and input fields for editing
-            // echo "<form action='updateReport.php' method='POST'>";
-            // foreach ($decryptedRow as $key => $value) {
-            //     echo "<div>";
-            //     echo "<label for='$key'>$key:</label>";
-            //     echo "<input type='text' id='$key' name='$key' value='$value'>";
-            //     echo "</div>";
-            // }
-            // echo "<input type='hidden' name='Case_Number' value='$caseNumber'>";
-            // echo "<input type='submit' value='Update'>";
-            // echo "</form>";
         } else {
             echo "Report not found.";
         }
@@ -145,7 +133,7 @@ try {
 
         .btn-save {
         display: block;
-        margin: 20px auto; /* Adjust margin as needed */
+        margin: 20px auto;
         text-align: center;
         }
     </style>
@@ -186,7 +174,7 @@ try {
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">Profile</a>
+                            <a class="nav-link active" href="profile.php">Profile</a>
                         </li>
                         <li class="nav-item">
                             <a href="logout.php" class="btn btn-danger active" role="button" aria-pressed="true">Log
@@ -200,7 +188,6 @@ try {
 
     
 </div>
-
 <form action="modify_process.php" method="POST">
     <table border='1'>
         <?php foreach ($decryptedRow as $key => $value): ?>
@@ -212,7 +199,7 @@ try {
                         <input type="hidden" name="<?= $key ?>" value="<?= $value ?>">
                     <?php else: ?>
                         <td style="background-color: #cea0e8; padding: 4px;">
-                            <input type="text" name="<?= $key ?>" value="<?= $value ?>" style="box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); background: inherit; padding: 4px;">
+                            <input type="text" name="<?= $key ?>" value="<?= $value ?>" style="box-shadow: 0 0 5px rgba(0, 0, 0, -0.1); background: inherit; padding: 4px;">
                         </td>
                     <?php endif; ?>
                 </tr>

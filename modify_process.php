@@ -2,7 +2,6 @@
 require_once "config.php";
 require_once "session.php";
 
-// Function to encrypt sensitive data
 function encryptString(string $s, string $cipher_algo = "aes-256-cbc"): string
 {
     global $encryptionKey;
@@ -30,7 +29,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_SESSION["userid"])) {
     try {
         $Patient_Number = $_SESSION["userid"];
         
-        // Encrypt sensitive data
         $Systolic_BP = encryptString($_POST["Systolic_BP"]);
         $Diastolic_BP = encryptString($_POST["Diastolic_BP"]);
         $Respiratory_Rate = encryptString($_POST["Respiratory_Rate"]);
@@ -43,7 +41,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_SESSION["userid"])) {
         $Diagnosis = encryptString($_POST["Diagnosis"]);
         $Medication = encryptString($_POST["Medication"]);
 
-        // Update medical report
         $updateQuery = $db->prepare("UPDATE medical_records SET Date=?, Symptoms=?, Systolic_BP=?, Diastolic_BP=?, Respiratory_Rate=?, Capillary_Refill=?, Body_Temp=?, Weight=?, Pulse_Rate=?, Diagnosis=?, Medication=?, Doctor_Name=? WHERE Case_Number=? AND Patient_Number=?");
         
         $updateQuery->bind_param(
