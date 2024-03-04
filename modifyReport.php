@@ -12,6 +12,7 @@
             justify-content: center;
             height: 100vh;
             margin: 0;
+            background: linear-gradient(to bottom, #ffffff, #f2f5f7);
         }
         .container {
             text-align: center;

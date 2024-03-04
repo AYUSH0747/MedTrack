@@ -35,6 +35,7 @@ $result = $query->get_result();
             height:100vh;
             margin: 0;
             padding: 0;
+            background: linear-gradient(to bottom, #ffffff, #f2f5f7);
         }
         .container {
             text-align: center;

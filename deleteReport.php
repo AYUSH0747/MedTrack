@@ -40,6 +40,7 @@ try {
             height: 100vh;
             margin: 0;
             padding-top: 50px;
+            background: linear-gradient(to bottom, #ffffff, #f2f5f7);
         }
         table {
             border-collapse: collapse;
