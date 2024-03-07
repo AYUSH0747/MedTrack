@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiology</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .vertical-nav {
+            min-width: 17rem;
+            width: 17rem;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s;
+            padding-top: 80px;
+        }
+
+        .page-content {
+            margin-left: 17rem;
+            transition: all 0.4s;
+        }
+
+        /* for toggle behavior */
+
+        #sidebar.active {
+            margin-left: -17rem;
+        }
+
+        #content.active {
+            width: 100%;
+            margin: 0;
+        }
+
+        .col-8 {
+            text-align: justify;
+            margin-left: 29%;
+            padding-top: 2200px;
+        }
+        @media (max-width: 768px) {
+            #sidebar {
+                margin-left: -17rem;
+            }
+            #sidebar.active {
+                margin-left: 0;
+            }
+            #content {
+                width: 100%;
+                margin: 0;
+            }
+            #content.active {
+                margin-left: 17rem;
+                width: calc(100% - 17rem);
+            }
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            background-image: url('https://img.freepik.com/free-vector/white-background-with-blue-tech-hexagon_1017-19366.jpg?w=900&t=st=1709404718~exp=1709405318~hmac=c2bc7121338492b34064448c232c4c465e17ba95d99800fde257d798890ee162');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: linear-gradient(to bottom, #ffffff, #f0f0f0);
+            border: 2px solid #ddd;
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 600px;
+            overflow-y: auto;
+            max-height: 80vh;
+            position: relative;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            color: #ff6347; /* Red color */
+            font-size: 24px;
+            border: 2px solid #ff6347; /* Red border */
+            border-radius: 50%;
+            padding: 6px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px; /* Increased margin */
+        }
+
+        p {
+            color: #555;
+            line-height: 1.8; /* Increased line-height for better readability */
+            margin-bottom: 15px; /* Increased margin */
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            padding-left: 15px;
+            color: #555; /* Changed color for list items */
+        }
+
+        li {
+            margin-bottom: 8px; /* Increased margin */
+        }
+    </style>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+    <nav class="navbar bg-body-tertiary fixed-top" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="welcome.php">MedTrack</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                    aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="history.php">History</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link active dropdown-toggle" href="#" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                Reports
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="createReport.php">Add Report</a></li>
+                                <li><a class="dropdown-item" href="modifyReport.php">Edit Report</a></li>
+                                <li>
+                                </li>
+                                <li><a class="dropdown-item" href="deleteReport.php">Delete Report</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="profile.php">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="logout.php" class="btn btn-danger active" role="button" aria-pressed="true">Log
+                                Out</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="row">
+        <div class="col-4">
+          <nav id="navbar-example3" class="vertical-nav bg-dark flex-column align-items-stretch pe-4 border-end">
+            <nav class="nav nav-pills flex-column">
+              <a class="nav-link" href="#introduction"><strong>Introduction</strong></a>
+              <!-- <nav class="nav nav-pills flex-column">
+                <a class="nav-link ms-3 my-1" href="#item-1-1">Item 1-1</a>
+                <a class="nav-link ms-3 my-1" href="#item-1-2">Item 1-2</a>
+              </nav> -->
+              <a class="nav-link" href="#about-heart"><strong>About Heart</strong></a>
+              <a class="nav-link" href="#common-conditions"><strong>Common Conditions</strong></a>
+              <nav class="nav nav-pills flex-column">
+                <a class="nav-link ms-3 my-1" href="#cad">Coronary artery disease</a>
+                <a class="nav-link ms-3 my-1" href="#heart-failure">Heart Failure</a>
+                <a class="nav-link ms-3 my-1" href="#arrhythmias">Arrhythmias</a>
+                <a class="nav-link ms-3 my-1" href="#high-BP">High Blood Pressure</a>
+                <a class="nav-link ms-3 my-1" href="#congenital-heart-defect">Congenital heart defects</a>
+              </nav>
+              <a class="nav-link" href="#early-signs"><strong>Early Signs</strong></a>
+              <a class="nav-link" href="#D-T"><strong>Diagnosis and Treatment</strong></a>
+              <a class="nav-link" href="#disclaimer"><strong>Disclaimer</strong></a>
+              
+            </nav>
+          </nav>
+        </div>
+      
+        <div class="col-8">
+          <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-offset="0" class="scrollspy-example-2" tabindex="0">
+            <div id="introduction">
+              <h4><strong>Introduction</strong></h4>
+              <p>The human body is a remarkable orchestra, each organ playing a crucial role in the harmonious symphony of life. At the very center of this orchestra, conducting the flow of life-sustaining blood, lies the heart. Cardiology, a captivating field of medicine, delves into the intricate workings of this vital organ and the circulatory system it leads, safeguarding our well-being. While I cannot offer specific medical advice due to the sensitive nature of this field, this comprehensive exploration embarks on a journey to understand the heart's magnificent function, unveil common cardiovascular conditions, and emphasize the importance of early diagnosis and treatment.</p> <br>
+              <p>This journey begins by appreciating the heart as a tireless engine, tirelessly pumping blood throughout the body. We will explore the four chambers that collaborate to ensure every cell receives vital oxygen and nutrients. Next, we will unveil the complexities of cardiovascular conditions like coronary artery disease, heart failure, and arrhythmias, understanding their impact on the body's symphony. Recognizing early warning signs like chest pain, shortness of breath, and fatigue will equip us to seek prompt medical attention, allowing for early diagnosis and the implementation of effective treatment plans.</p><br>
+              <p>From lifestyle modifications and medications to minimally invasive procedures and specialized care, cardiology offers a range of solutions to keep the heart's rhythm steady and the symphony of life playing in harmony. Remember, the information provided here is for general knowledge only and should not be a substitute for professional medical advice. Consulting a qualified healthcare professional is crucial for personalized guidance and treatment, ensuring a healthy heart and a vibrant life.</p>
+            </div>
+            <!-- <div id="item-1-1">
+              <h5>Item 1-1</h5>
+              <p>...</p>
+            </div>
+            <div id="item-1-2">
+              <h5>Item 1-2</h5>
+              <p>...</p>
+            </div> -->
+            <div id="about-heart">
+              <h4><strong>The Heart: A Powerful Engine</strong></h4>
+              <p>Imagine the heart as a tireless engine, situated within the chest cavity. This muscular marvel, composed of four chambers, works tirelessly to circulate blood throughout the body, ensuring every cell receives vital oxygen and nutrients.</p>
+              <ul>
+                <li><strong>Right Atrium:</strong> This chamber acts as a collection point, receiving oxygen-depleted blood returning from the body.</li>
+                <li><strong>Right Ventricle: </strong> Acting as a pump, it propels this blood towards the lungs for vital oxygenation.</li>
+                <li><strong>Left Atrium: </strong> TOnce oxygenated in the lungs, blood enters this chamber.</li>
+                <li><strong>Left Ventricle: </strong> The strongest chamber, it pumps oxygen-rich blood throughout the body via the aorta, the largest artery.</li>
+              </ul>
+            </div>
+            <div id="common-conditions">
+              <h4><strong>Unveiling Common cardiovascular Conditions: </strong></h4>
+            </div>
+            <div id="cad">
+              <p><strong>Coronary artery disease (CAD): </strong> This progressive condition arises when plaque buildup narrows the coronary arteries, restricting blood flow to the heart. This can lead to angina (chest pain) or a potentially life-threatening heart attack.</p>
+            </div>
+            <div id="heart-failure">
+              <p><strong>Heart Failure: </strong>A chronic condition, heart failure weakens the heart's pumping ability, causing symptoms like fatigue, shortness of breath, and swollen ankles. </p>
+            </div>
+            <div id="arrhythmias">
+                <p><strong>Arrhythmias </strong>These are irregular heart rhythms, categorized as: </p>
+                <ul>
+                    <li><strong>Bradycardia: </strong> Slow heart rate (below 60 beats per minute) </li>
+                    <li><strong>Tachycardia: </strong> Fast heart rate (above 100 beats per minute) </li>
+                    <li><strong>Premature beats: </strong> Extra heartbeats originating outside the usual electrical conduction pathway </li>
+                    <li><strong>Fibrillation: </strong> Chaotic and disorganized heartbeats  </li>
+                </ul>
+            </div>
+            <div id="high-BP">
+                <p><strong>High blood pressure (hypertension): </strong>This condition occurs when the force of blood pushing against the artery walls remains consistently elevated, increasing the risk of heart disease, stroke, and other health problems. </p>
+            </div>
+            <div id="congenital-heart-defect">
+                <p><strong>Congenital heart defects: </strong>These are heart abnormalities present from birth, affecting the heart structure, valves, or blood flow patterns. The severity can range from mild to complex, requiring specialized care and management. </p>
+            </div>
+
+            <div id="early-signs">
+                <h4><strong>Recognizing Early Warning Signs: </strong></h4>
+                <p>While symptoms of heart problems can vary, some common early warning signs to be aware of include: </p>
+                <ul>
+                    <li>Chest pain or pressure, especially with exertion or at rest</li>
+                    <li>Shortness of breath, particularly when lying down or during activity</li>
+                    <li>Unexplained fatigue or weakness</li>
+                    <li>Rapid or irregular heartbeats</li>
+                    <li>Palpitations (feeling the heartbeat)</li>
+                    <li>Swelling in the ankles or legs</li>
+                    <li>Dizziness or lightheadedness</li>
+                    <li>Night sweats</li>
+                    <li>Persistent cough</li>
+                </ul>
+            </div>
+            <div id="D-T">
+                <h4><strong>The Importance of Early Diagnosis and Treatment: </strong></h4>
+                <p>Seeking prompt medical attention upon experiencing any of these symptoms allows for early diagnosis and the implementation of effective treatment plans. These may involve: </p>
+                <ul>
+                    <li><strong>Lifestyle Modificaions:</strong> Maintaining a healthy weight, adhering to a balanced diet, engaging in regular physical activity, managing stress effectively, and quitting smoking are crucial for preventing and managing heart disease.</li>
+                    <li><strong>Medications:</strong> Various medications are used to address different cardiovascular conditions, such as lowering blood pressure, controlling cholesterol levels, regulating heart rate, and preventing blood clots.</li>
+                    <li><strong>Procedures:</strong> In certain cases, minimally invasive procedures like angioplasty and stent placement, or even open-heart surgery like bypass surgery, might be necessary.</li>
+                </ul>
+            </div>
+            <div id="disclaimer">
+                <h4><strong>Disclaimer: </strong></h4>
+                <p>Remember, the information provided here is for general knowledge only and should not be interpreted as medical advice. If you or someone you know experiences any symptoms suggestive of a heart condition, consulting a healthcare professional promptly is vital for proper diagnosis and treatment. Early intervention is crucial for effectively managing cardiovascular conditions and improving long-term health outcomes.</p>
+            </div>
+            </div>
+        </div>
+      </div>
+    
+</body>
+</html>
