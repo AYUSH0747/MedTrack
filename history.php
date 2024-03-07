@@ -35,7 +35,9 @@ $result = $query->get_result();
             height:100vh;
             margin: 0;
             padding: 0;
-            background: linear-gradient(to bottom, #ffffff, #f2f5f7);
+            background-image: url('https://img.freepik.com/free-vector/white-background-with-blue-tech-hexagon_1017-19366.jpg?w=900&t=st=1709404718~exp=1709405318~hmac=c2bc7121338492b34064448c232c4c465e17ba95d99800fde257d798890ee162');
+            background-size: cover;
+            background-repeat: no-repeat;
         }
         .container {
             text-align: center;
