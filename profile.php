@@ -55,6 +55,11 @@ try {
         echo "height: 100vh;";
         echo "margin: 0;";
         echo "padding-top: 20px;";
+        echo "background-image: url('https://img.freepik.com/free-vector/white-background-with-blue-tech-hexagon_1017-19366.jpg?w=900&t=st=1709404718~exp=1709405318~hmac=c2bc7121338492b34064448c232c4c465e17ba95d99800fde257d798890ee162');"; /* Replace 'path_to_your_image.jpg' with the actual path to your image */
+        echo "background-size: cover;";
+        echo "background-repeat: no-repeat;";
+        echo "background-color: linear-gradient(to bottom, #ffffff, #f2f5f7);";
+        // echo "background-image: url('https://img.freepik.com/free-vector/white-background-with-blue-tech-hexagon_1017-19366.jpg?w=900&t=st=1709404718~exp=1709405318~hmac=c2bc7121338492b34064448c232c4c465e17ba95d99800fde257d798890ee162');"
         echo "}";
         echo "table {";
         echo "border-collapse: collapse;";
